@@ -3,6 +3,8 @@ package org.example.entity;
 
 import jakarta.persistence.*;
 
+import java.util.Date;
+
 @Entity
 public class Product {
 
@@ -14,13 +16,16 @@ public class Product {
 
     private Double price;
 
+    private Date productionDate;
+
     public Product() {
     }
 
-    public Product(Long id, String name, Double price) {
-        this.id = id;
-        this.name = name;
+    public Product(Date productionDate, Double price, String name, Long id) {
+        this.productionDate = productionDate;
         this.price = price;
+        this.name = name;
+        this.id = id;
     }
 
     public Long getId() {
@@ -45,5 +50,13 @@ public class Product {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public Date getProductionDate() {
+        return productionDate;
+    }
+
+    public void setProductionDate(Date productionDate) {
+        this.productionDate = productionDate;
     }
 }
