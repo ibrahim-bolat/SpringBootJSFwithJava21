@@ -11,9 +11,16 @@ public class JsfInitializer implements ServletContextInitializer {
 
     @Override
     public void onStartup(ServletContext context) throws ServletException {
+        //bu ayar set edilmezse convertDateTime br gün önce tarih alıyor.
+        context.setInitParameter("jakarta.faces.DATETIMECONVERTER_DEFAULT_TIMEZONE_IS_SYSTEM_TIMEZONE", Boolean.TRUE.toString());
+        //xhtml kullanmadan doğrudan sayfa ismi ile ulaşılabiliyor url e
+        context.setInitParameter("jakarta.faces.AUTOMATIC_EXTENSIONLESS_MAPPING", "true");
+
+        //weld cdi container ı başlatıyor
         EnhancedListener cdiInitializer = new EnhancedListener();
         cdiInitializer.onStartup(null, context);
 
+        //faces servleti başlatıyor
         ServletContainerInitializer facesInitializer = new FacesInitializer();
         facesInitializer.onStartup(null, context);
     }

@@ -14,6 +14,10 @@
         <welcome-file>default.htm</welcome-file>
         <welcome-file>default.jsp</welcome-file>
     </welcome-file-list>
+    <context-param>
+        <param-name>com.sun.faces.forceLoadConfiguration</param-name>
+        <param-value>true</param-value>
+    </context-param>
     <servlet>
         <servlet-name>facesServlet</servlet-name>
         <servlet-class>jakarta.faces.webapp.FacesServlet</servlet-class>
@@ -24,7 +28,7 @@
         <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
     <context-param>
-        <param-name>com.sun.faces.forceLoadConfiguration</param-name>
+        <param-name>jakarta.faces.AUTOMATIC_EXTENSIONLESS_MAPPING</param-name>
         <param-value>true</param-value>
     </context-param>
     <session-config>
